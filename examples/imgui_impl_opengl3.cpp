@@ -115,7 +115,7 @@
 #if defined(IMGUI_IMPL_OPENGL_LOADER_GL3W)
 #include <GL/gl3w.h>            // Needs to be initialized with gl3wInit() in user's code
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLEW)
-#include <pxr/imaging/glf/glew.h>            // Needs to be initialized with glewInit() in user's code.
+#include <GL/glew.h>            // Needs to be initialized with glewInit() in user's code.
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLAD)
 #include <glad/glad.h>          // Needs to be initialized with gladLoadGL() in user's code.
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLBINDING2)
@@ -277,7 +277,7 @@ static void ImGui_ImplOpenGL3_SetupRenderState(ImDrawData* draw_data, int fb_wid
 #endif
     (void)vertex_array_object;
 #ifndef IMGUI_IMPL_OPENGL_ES2
-  glBindVertexArray(vertex_array_object);
+    glBindVertexArray(vertex_array_object);
 #endif
 
     // Bind vertex/index buffers and setup attributes for ImDrawVert
@@ -677,7 +677,7 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
     glBindTexture(GL_TEXTURE_2D, last_texture);
     glBindBuffer(GL_ARRAY_BUFFER, last_array_buffer);
 #ifndef IMGUI_IMPL_OPENGL_ES2
-     glBindVertexArray(last_vertex_array);
+    glBindVertexArray(last_vertex_array);
 #endif
     return true;
 }
